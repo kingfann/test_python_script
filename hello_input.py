@@ -1,3 +1,8 @@
-username = input(" ")
-print(username)
+import sys
+
+print("arguments", sys.argv)
+for arg in sys.argv:
+    print(arg)
+
+
 
