@@ -14,7 +14,7 @@ try:
     if response.status_code == 200:
         #   print(response.json())
         orgs = response.json()
-        print(orgs)
+        #print(orgs)
         for org in orgs:
             if org['name'] == 'DevNet Sandbox':
                 orgid = org['id']
