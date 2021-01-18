@@ -45,8 +45,9 @@ try:
         devices = response.json()
         for device in devices:
             print(device['model'], device['serial'])
-            #print(device)
+            print(device)
             j += 1
             print(j)
 except Exception as ex:
     print(ex)
+
