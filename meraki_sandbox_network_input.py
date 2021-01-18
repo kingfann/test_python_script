@@ -1,5 +1,6 @@
 import requests
 import json
+import sys
 
 merakikey = "6bec40cf957de430a6f1f2baa056b99a4fac9ea0"
 base_url = 'https://api.meraki.com/api/v0'
@@ -14,11 +15,11 @@ try:
     if response.status_code == 200:
         #   print(response.json())
         orgs = response.json()
-        print(orgs)
+        #print(orgs)
         for org in orgs:
             if org['name'] == 'DevNet Sandbox':
                 orgid = org['id']
-                print(orgid)
+                #print(orgid)
 except Exception as ex:
     print(ex)
 
@@ -30,9 +31,9 @@ try:
         ntws = response.json()
         #print(ntws)
         for ntw in ntws:
-            if ntw['name'] == "DevNet Sandbox ALWAYS ON":
+            if ntw['name'] == sys.argv[1]:
                 ntwid = ntw['id']
-                print(ntwid)
+                #print(ntwid)
 except Exception as ex:
     print(ex)
 
@@ -40,7 +41,7 @@ except Exception as ex:
 endpoint = f"/networks/{ntwid}/devices"
 
 try:
-    j = 0 
+    j = 0
     response = requests.get(url=f"{base_url}{endpoint}", headers=headers)
     if response.status_code == 200:
         devices = response.json()
