@@ -14,7 +14,7 @@ try:
     if response.status_code == 200:
         #   print(response.json())
         orgs = response.json()
-        print(orgs)
+        #print(orgs)
         for org in orgs:
             if org['name'] == 'DevNet Sandbox':
                 orgid = org['id']
@@ -28,11 +28,10 @@ try:
     response = requests.get(url=f"{base_url}{endpoint}", headers=headers)
     if response.status_code == 200:
         ntws = response.json()
-        print(ntws)
         for ntw in ntws:
-            if ntw['name'] == "DevNet Sandbox ALWAYS ON":
-                ntwid = ntw['id']
-                print(ntwid)
+            ntwid = ntw['id']
+            ntwname = ntw['name']
+            print(f"id: {ntwid} , networkname:  {ntwname}")
 except Exception as ex:
     print(ex)
 
